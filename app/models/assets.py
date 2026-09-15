@@ -37,17 +37,15 @@ class Avatar(AssetBase):
     example_video_urls: list[str] = []
 
 class Voice(AssetBase):
-    """Section 4 — Voice fields"""
     language: str = "en"
     accent: str | None = None
-    tone: str | None = None            # e.g. "reassuring", "professional"
+    tone: str | None = None            
     gender_presentation: str | None = None
     speed: float = 1.0
     style: str | None = None
 
 class Background(AssetBase):
-    """Section 4 — Background fields"""
-    category: str                       # office, care_home, school, nursery, hospital, etc. (Section 10)
+    category: str                       
     environment: str | None = None
     style: str | None = None
     color_palette: str | None = None
@@ -55,8 +53,6 @@ class Background(AssetBase):
     media_url: str 
 
 class Script(BaseModel):
-    """Section 4 — Scripts. Alag base class kyunki ye 'reusable media asset' nahi,
-    text-content hai — embedding alag tarah se hogi (semantic text search)"""
     id: UUID = Field(default_factory=uuid4)
     full_script: str
     scene_scripts: list[str] = []
@@ -71,14 +67,11 @@ class Script(BaseModel):
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 class VideoBrief(BaseModel):
-    """Section 6 — Wizard k 9 steps ka structured output. Ye wo object hai jo
-    RAG search, reuse scorer, aur provider selector — sab ko yehi ek object bhejenge"""
     sector: Sector
     country: str
     audience: str
     tone: str
-    culture: str | None = None          # None = "AI Recommended" (Section 5, Step 5)
-    video_type: str
+    culture: str | None = None          
     video_format: str = "16:9"
     duration_seconds: int
     description: str  
