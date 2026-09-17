@@ -1,0 +1,47 @@
+[
+  {
+    "provider": "heygen",
+    "provider_asset_id": "hg_avatar_001",
+    "name": "Sarah Mitchell",
+    "appearance": "Professional woman in her 40s, warm and approachable demeanor, business casual attire",
+    "gender_presentation": "female",
+    "approximate_age_style": "40s",
+    "country": "United Kingdom",
+    "accent": "British RP",
+    "language": "en-GB",
+    "sector_suitability": ["adult_care", "adult_social_work"],
+    "clothing": "smart casual, navy cardigan",
+    "pose_style": "seated, friendly gesture",
+    "previous_usage_count": 12
+  },
+  {
+    "provider": "synthesia",
+    "provider_asset_id": "syn_avatar_014",
+    "name": "James Okafor",
+    "appearance": "Man in his 30s, confident and reassuring presence, smart-casual office wear",
+    "gender_presentation": "male",
+    "approximate_age_style": "30s",
+    "country": "United Kingdom",
+    "accent": "British RP",
+    "language": "en-GB",
+    "sector_suitability": ["education", "childrens_social_work"],
+    "clothing": "light blue shirt, no tie",
+    "pose_style": "standing, open posture",
+    "previous_usage_count": 8
+  },
+  {
+    "provider": "heygen",
+    "provider_asset_id": "hg_avatar_027",
+    "name": "Fatima Al-Rashid",
+    "appearance": "Woman in her 30s, calm and nurturing presence, professional nursery-appropriate attire",
+    "gender_presentation": "female",
+    "approximate_age_style": "30s",
+    "country": "United Kingdom",
+    "accent": "British neutral",
+    "language": "en-GB",
+    "sector_suitability": ["early_years", "fostering"],
+    "clothing": "soft pastel cardigan",
+    "pose_style": "seated, gentle expression",
+    "previous_usage_count": 5
+  }
+]

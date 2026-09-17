@@ -1,0 +1,44 @@
+[
+  {
+    "provider": "internal",
+    "provider_asset_id": "bg_001",
+    "category": "care_home",
+    "country": "United Kingdom",
+    "culture": "British",
+    "environment": "Warm, softly lit care home lounge with comfortable seating",
+    "style": "realistic, calm, homely",
+    "color_palette": "warm neutrals, soft beige",
+    "aspect_ratio": "16:9",
+    "media_url": "s3://n2x-assets/backgrounds/care_home_lounge_01.mp4",
+    "sector_suitability": ["adult_care"],
+    "previous_usage_count": 15
+  },
+  {
+    "provider": "internal",
+    "provider_asset_id": "bg_002",
+    "category": "nursery",
+    "country": "United Kingdom",
+    "culture": "British",
+    "environment": "Bright, colourful nursery classroom with toys and soft play area",
+    "style": "realistic, cheerful, safe",
+    "color_palette": "bright primary colours",
+    "aspect_ratio": "16:9",
+    "media_url": "s3://n2x-assets/backgrounds/nursery_classroom_01.mp4",
+    "sector_suitability": ["early_years"],
+    "previous_usage_count": 9
+  },
+  {
+    "provider": "internal",
+    "provider_asset_id": "bg_003",
+    "category": "office",
+    "country": "United Kingdom",
+    "culture": "British",
+    "environment": "Modern corporate office with glass walls and clean desks",
+    "style": "professional, minimal, corporate",
+    "color_palette": "cool greys, navy accents",
+    "aspect_ratio": "16:9",
+    "media_url": "s3://n2x-assets/backgrounds/modern_office_01.mp4",
+    "sector_suitability": ["education", "adult_social_work"],
+    "previous_usage_count": 20
+  }
+]
