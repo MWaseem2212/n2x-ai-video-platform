@@ -24,7 +24,7 @@
     "country": "United Kingdom",
     "accent": "British RP",
     "language": "en-GB",
-    "sector_suitability": ["education", "children_social_work"],
+    "sector_suitability": ["education", "childrens_social_work"],
     "clothing": "light blue shirt, no tie",
     "pose_style": "standing, open posture",
     "previous_usage_count": 8
