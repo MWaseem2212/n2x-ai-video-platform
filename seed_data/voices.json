@@ -1,0 +1,26 @@
+[
+  {
+    "provider": "heygen",
+    "provider_asset_id": "hg_voice_001",
+    "language": "en-GB",
+    "accent": "British RP",
+    "tone": "reassuring, professional",
+    "gender_presentation": "female",
+    "speed": 1.0,
+    "style": "calm and clear",
+    "sector_suitability": ["adult_care", "adult_social_work"],
+    "previous_usage_count": 10
+  },
+  {
+    "provider": "synthesia",
+    "provider_asset_id": "syn_voice_009",
+    "language": "en-GB",
+    "accent": "British neutral",
+    "tone": "friendly, energetic",
+    "gender_presentation": "male",
+    "speed": 1.05,
+    "style": "conversational",
+    "sector_suitability": ["education"],
+    "previous_usage_count": 6
+  }
+]
