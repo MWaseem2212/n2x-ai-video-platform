@@ -83,3 +83,10 @@ class VideoBrief(BaseModel):
     video_format: str = "16:9"
     duration_seconds: int
     description: str
+
+class VideoPlan(BaseModel):
+    """Section 7 — AI Video Planner ka structured output.
+    LLM is exact shape mein response dega, kuch aur nahi"""
+    title: str
+    proposed_structure: list[str]   # e.g. ["Intro - 3 seconds", "Avatar introduction - 8 seconds"]
+    estimated_total_duration: int
