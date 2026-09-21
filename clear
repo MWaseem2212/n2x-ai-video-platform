@@ -1,0 +1,5 @@
+[33mc0ee1b1[m[33m ([m[1;31morigin/feature/step3-langchain-refactor[m[33m, [m[1;32mfeature/step3-langchain-refactor[m[33m)[m refactor: migrate RAG vector store and search to LangChain (QdrantVectorStore, FastEmbedEmbeddings)
+[33m27ec4c7[m Merge pull request #2 from MWaseem2212/feature/step2-seed-vector-store
+[33mb593d38[m[33m ([m[1;31morigin/feature/step2-seed-vector-store[m[33m, [m[1;32mfeature/step2-seed-vector-store[m[33m)[m feature: implement RAG vector store with seed data and semantic search
+[33m3b8b019[m feature: setup Qdrant client and create vector collections
+[33m5be3997[m[33m ([m[1;31morigin/feature/step1-data-models[m[33m, [m[1;32mfeature/step1-data-models[m[33m)[m feature: add pydantic models for Avatar, Voice, Background, Script, VideoBrief
