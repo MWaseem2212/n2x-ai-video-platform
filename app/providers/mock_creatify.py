@@ -8,7 +8,7 @@ from app.models.assets import VideoBrief
 class MockCreatifyProvider(VideoProvider):
 
     def list_avatars(self) -> list[dict]:
-        return []  # Reasoning: Creatify ko humne abhi koi avatar assign nahi kiya seed data mein
+        return []
 
     def estimate_cost(self, brief: VideoBrief) -> float:
         rate_per_second = 0.05
