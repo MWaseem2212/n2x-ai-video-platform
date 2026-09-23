@@ -8,7 +8,7 @@ from app.graph.nodes import (
     cost_estimation_node,
 )
 
-
+ 
 def build_video_creation_graph():
     graph = StateGraph(VideoCreationState)
 
