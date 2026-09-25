@@ -1,14 +1,16 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
 
 from app.models.assets import VideoBrief
 from app.models.api import VideoCreationResponse
 from app.graph.run import run_video_creation
+from app.db.session import get_db
+from app.db.crud import save_video_request
 
 app = FastAPI(
     title="N2X AI Video Creation Platform",
-    description="Orchestration and reuse engine for AI video generation",
-    version="0.1.0",
+    description="Orchestration and reuse engine for AI video generation"
 )
 
 app.add_middleware(
@@ -25,12 +27,7 @@ def health_check():
 
 
 @app.post("/create-video", response_model=VideoCreationResponse)
-def create_video(brief: VideoBrief):
-    """
-    Section 46, 50 — Ye humara core endpoint hai. Client ek VideoBrief
-    bhejta hai, hum poora LangGraph pipeline chalate hain, structured
-    result wapas karte hain.
-    """
+def create_video(brief: VideoBrief, db: Session = Depends(get_db)):
     try:
         result = run_video_creation(brief)
     except Exception as e:
@@ -38,6 +35,8 @@ def create_video(brief: VideoBrief):
             status_code=500,
             detail=f"Video creation pipeline failed: {str(e)}",
         )
+
+    save_video_request(db, brief, result)
 
     return VideoCreationResponse(
         video_plan=result["video_plan"],
