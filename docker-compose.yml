@@ -6,5 +6,17 @@ services:
     volumes:
       - qdrant_storage:/qdrant/storage
 
+  postgres:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: n2x_user
+      POSTGRES_PASSWORD: n2x_password
+      POSTGRES_DB: n2x_video_platform
+    volumes:
+      - postgres_storage:/var/lib/postgresql/data
+
 volumes:
   qdrant_storage:
+  postgres_storage:
