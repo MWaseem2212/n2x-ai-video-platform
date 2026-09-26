@@ -43,5 +43,36 @@
     "clothing": "soft pastel cardigan",
     "pose_style": "seated, gentle expression",
     "previous_usage_count": 5
+  },
+
+    {
+    "provider": "heygen",
+    "provider_asset_id": "hg_avatar_041",
+    "name": "Marcus Bennett",
+    "appearance": "Man in his 20s, friendly and relatable presence, casual-professional attire, approachable for young adults",
+    "gender_presentation": "male",
+    "approximate_age_style": "20s",
+    "country": "United Kingdom",
+    "accent": "British neutral",
+    "language": "en-GB",
+    "sector_suitability": ["leaving_care", "childrens_social_work"],
+    "clothing": "casual jacket, no formal tie",
+    "pose_style": "standing, relaxed and open",
+    "previous_usage_count": 3
+  },
+  {
+    "provider": "synthesia",
+    "provider_asset_id": "syn_avatar_022",
+    "name": "Priya Sharma",
+    "appearance": "Woman in her 40s, warm and experienced presence, professional residential-care appropriate attire",
+    "gender_presentation": "female",
+    "approximate_age_style": "40s",
+    "country": "United Kingdom",
+    "accent": "British neutral",
+    "language": "en-GB",
+    "sector_suitability": ["childrens_homes", "fostering", "other"],
+    "clothing": "smart cardigan, professional but approachable",
+    "pose_style": "seated, attentive expression",
+    "previous_usage_count": 2
   }
 ]
