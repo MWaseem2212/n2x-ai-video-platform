@@ -40,5 +40,33 @@
     "media_url": "s3://n2x-assets/backgrounds/modern_office_01.mp4",
     "sector_suitability": ["education", "adult_social_work"],
     "previous_usage_count": 20
+  },
+    {
+    "provider": "internal",
+    "provider_asset_id": "bg_004",
+    "category": "residential_home",
+    "country": "United Kingdom",
+    "culture": "British",
+    "environment": "Warm, homely residential setting with comfortable living room, family photos on walls",
+    "style": "realistic, warm, domestic",
+    "color_palette": "warm earth tones, soft lighting",
+    "aspect_ratio": "16:9",
+    "media_url": "s3://n2x-assets/backgrounds/residential_home_01.mp4",
+    "sector_suitability": ["fostering", "childrens_homes"],
+    "previous_usage_count": 6
+  },
+  {
+    "provider": "internal",
+    "provider_asset_id": "bg_005",
+    "category": "community_space",
+    "country": "United Kingdom",
+    "culture": "British",
+    "environment": "Bright, informal community centre setting with casual seating, approachable atmosphere",
+    "style": "realistic, relaxed, welcoming",
+    "color_palette": "bright neutrals, natural light",
+    "aspect_ratio": "16:9",
+    "media_url": "s3://n2x-assets/backgrounds/community_space_01.mp4",
+    "sector_suitability": ["leaving_care", "childrens_social_work", "other"],
+    "previous_usage_count": 3
   }
 ]

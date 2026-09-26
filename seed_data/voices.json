@@ -22,5 +22,29 @@
     "style": "conversational",
     "sector_suitability": ["education"],
     "previous_usage_count": 6
+  },
+    {
+    "provider": "heygen",
+    "provider_asset_id": "hg_voice_017",
+    "language": "en-GB",
+    "accent": "British neutral",
+    "tone": "warm, nurturing",
+    "gender_presentation": "female",
+    "speed": 0.95,
+    "style": "gentle and patient",
+    "sector_suitability": ["early_years", "fostering", "childrens_homes"],
+    "previous_usage_count": 4
+  },
+  {
+    "provider": "synthesia",
+    "provider_asset_id": "syn_voice_031",
+    "language": "en-GB",
+    "accent": "British neutral",
+    "tone": "supportive, relatable",
+    "gender_presentation": "male",
+    "speed": 1.0,
+    "style": "conversational and encouraging",
+    "sector_suitability": ["leaving_care", "childrens_social_work", "other"],
+    "previous_usage_count": 1
   }
 ]
