@@ -4,8 +4,9 @@ from langchain_qdrant import QdrantVectorStore
 
 from app.vector_store.embeddings import embedding_model
 from app.models.assets import VideoBrief
+from app.config import settings
 
-client = QdrantClient(host="localhost", port=6333)
+client = QdrantClient(url=settings.QDRANT_URL)
 
 
 def get_vectorstore(collection_name: str) -> QdrantVectorStore:

@@ -21,6 +21,7 @@ def save_video_request(db: Session, brief: VideoBrief, result: dict) -> VideoReq
         rag_saving_amount=result["cost_estimate"]["rag_saving_amount"],
         rag_saving_percentage=result["cost_estimate"]["rag_saving_percentage"],
         reuse_breakdown=result["reuse_result"]["breakdown"],
+        fallback_log=result["provider_decision"].get("fallback_log", [])
     )
 
     db.add(record)

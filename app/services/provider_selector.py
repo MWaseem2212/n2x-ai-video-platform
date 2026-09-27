@@ -1,12 +1,9 @@
-import os
-from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from pydantic import BaseModel
 
 from app.models.assets import VideoBrief
 from app.providers import PROVIDERS
-
-load_dotenv()
+from app.config import settings
 
 SCORING_WEIGHTS = {
     "avatar_available": 0.5,
@@ -46,13 +43,60 @@ def select_best_provider(brief: VideoBrief) -> dict:
     return {"recommended": best["provider"], "cost": best["cost"], "all_scores": scores}
 
 
+
+def select_provider_with_fallback(brief: VideoBrief) -> dict:
+    scores = [score_provider(name, brief) for name in PROVIDERS]
+    eligible = [s for s in scores if s["has_avatar"]]
+
+    if not eligible:
+        return {
+            "recommended": None,
+            "reason": "No provider has a suitable avatar",
+            "fallback_log": [],
+        }
+
+    sorted_eligible = sorted(eligible, key=lambda s: s["cost"])
+
+    fallback_log = []
+
+    for candidate in sorted_eligible:
+        provider_name = candidate["provider"]
+        provider = PROVIDERS[provider_name]
+
+        if provider.is_available:
+            fallback_log.append({
+                "provider": provider_name,
+                "status": "selected",
+                "reason": "Available and lowest cost among remaining eligible providers",
+            })
+            return {
+                "recommended": provider_name,
+                "cost": candidate["cost"],
+                "all_scores": scores,
+                "fallback_log": fallback_log,
+            }
+        else:
+            fallback_log.append({
+                "provider": provider_name,
+                "status": "unavailable",
+                "reason": "Provider marked unavailable — checking next eligible provider",
+            })
+
+    return {
+        "recommended": None,
+        "reason": "All eligible providers are currently unavailable",
+        "all_scores": scores,
+        "fallback_log": fallback_log,
+    }
+
+
 # --- LLM Explanation Layer ---
 
 class ProviderExplanation(BaseModel):
     explanation: str
 
 
-llm = ChatGroq(model="openai/gpt-oss-120b", api_key=os.getenv("GROQ_API_KEY"))
+llm = ChatGroq(model="openai/gpt-oss-120b", api_key=settings.GROQ_API_KEY)
 structured_llm = llm.with_structured_output(ProviderExplanation, method="json_mode")
 
 
