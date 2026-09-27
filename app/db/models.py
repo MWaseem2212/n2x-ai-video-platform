@@ -32,3 +32,4 @@ class VideoRequestRecord(Base):
     reuse_breakdown: Mapped[dict] = mapped_column(JSON)
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    fallback_log: Mapped[list] = mapped_column(JSON, nullable=True)

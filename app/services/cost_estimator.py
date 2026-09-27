@@ -1,5 +1,5 @@
 from app.models.assets import VideoBrief
-from app.services.provider_selector import select_best_provider
+from app.services.provider_selector import select_provider_with_fallback
 from app.services.reuse_scorer import calculate_reuse_score
 
 INTERNAL_PROCESSING_COST = 0.10
@@ -7,7 +7,7 @@ INTERNAL_PROCESSING_COST = 0.10
 
 def calculate_cost_estimate(brief: VideoBrief) -> dict:
     reuse_result = calculate_reuse_score(brief)
-    provider_decision = select_best_provider(brief)
+    provider_decision = select_provider_with_fallback(brief)
 
     if provider_decision["recommended"] is None:
         return {"error": "No suitable provider available"}

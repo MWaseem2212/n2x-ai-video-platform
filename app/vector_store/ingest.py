@@ -6,9 +6,10 @@ from langchain_qdrant import QdrantVectorStore
 
 from app.models.assets import Avatar, Voice, Background
 from app.vector_store.embeddings import embedding_model
+from app.config import settings
 
 SEED_DIR = Path("seed_data")
-QDRANT_URL = "http://localhost:6333"
+QDRANT_URL = settings.QDRANT_URL
 
 
 def build_avatar_text(avatar: Avatar) -> str:
