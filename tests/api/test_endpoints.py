@@ -23,14 +23,10 @@ VALID_PAYLOAD = {
 
 @pytest.fixture
 def client():
-    """
-    Har test ko ek fresh, khali in-memory database milta hai.
-    dependency_overrides FastAPI ko batata hai: 'get_db ki jagah ye wala use karo'.
-    """
     engine = create_engine(
         "sqlite://",
         connect_args={"check_same_thread": False},
-        poolclass=StaticPool,  # in-memory DB ke liye sab threads ek hi connection share karein
+        poolclass=StaticPool,
     )
     Base.metadata.create_all(engine)
     TestingSessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
@@ -44,7 +40,7 @@ def client():
 
     app.dependency_overrides[get_db] = override_get_db
     yield TestClient(app)
-    app.dependency_overrides.clear()  # cleanup: test khatam, override hata do
+    app.dependency_overrides.clear() 
 
 
 @pytest.fixture
@@ -78,7 +74,7 @@ def test_get_video_returns_404_when_not_found(client):
 def test_create_video_rejects_invalid_sector(client):
     bad_payload = {**VALID_PAYLOAD, "sector": "not_a_real_sector"}
     response = client.post("/create-video", json=bad_payload)
-    assert response.status_code == 422  # FastAPI ka automatic validation error
+    assert response.status_code == 422
 
 
 def test_create_video_success(client, mock_video_planner):
