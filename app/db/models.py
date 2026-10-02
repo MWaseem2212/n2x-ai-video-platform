@@ -31,8 +31,9 @@ class VideoRequestRecord(Base):
 
     reuse_breakdown: Mapped[dict] = mapped_column(JSON)
 
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     fallback_log: Mapped[list] = mapped_column(JSON, nullable=True)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
 
 class Video(Base):
@@ -56,15 +57,15 @@ class Video(Base):
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
+
 class VideoVersion(Base):
     __tablename__ = "video_versions"
 
     id: Mapped[str] = mapped_column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
 
     video_id: Mapped[str] = mapped_column(String)
-
     version_number: Mapped[int] = mapped_column(Integer)
-    
+
     change_description: Mapped[str] = mapped_column(String)
     previous_value: Mapped[str] = mapped_column(String, nullable=True)
     new_value: Mapped[str] = mapped_column(String, nullable=True)

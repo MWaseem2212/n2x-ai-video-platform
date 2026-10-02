@@ -1,13 +1,13 @@
-from langchain_groq import ChatGroq
-from app.models.assets import VideoBrief, VideoPlan
 from app.config import settings
+from app.models.assets import VideoBrief, VideoPlan
+from langchain_groq import ChatGroq
 
 llm = ChatGroq(model="openai/gpt-oss-120b", api_key=settings.GROQ_API_KEY)
-structured_llm = llm.with_structured_output(VideoPlan)
+structured_llm = llm.with_structured_output(VideoPlan, method="json_mode")
 
 
 def generate_video_plan(brief: VideoBrief) -> VideoPlan:
-    prompt = f"""
+  prompt = f"""
 You are a video production planner for {brief.sector.value} sector content.
 
 Create a structured video plan based on this brief:
@@ -19,26 +19,35 @@ Create a structured video plan based on this brief:
 
 Break the video into a clear scene-by-scene structure with approximate durations
 that add up to the total duration.
+
+CRITICAL INSTRUCTION:
+Return ONLY a valid JSON object with these EXACT keys:
+- "title": string
+- "proposed_structure": list of strings
+- "estimated_total_duration": integer (MUST be a raw number like 60, NOT "60 seconds" or a string)
 """
-    return structured_llm.invoke(prompt)
+  return structured_llm.invoke(prompt)
 
 
 if __name__ == "__main__":
-    from app.models.assets import Sector
+  from app.models.assets import Sector
 
-    test_brief = VideoBrief(
-        sector=Sector.ADULT_CARE,
-        country="United Kingdom",
-        audience="Employees",
-        tone="Professional, Reassuring",
-        video_type="Training",
-        duration_seconds=60,
-        description="Adult social care video for UK care workers explaining the five signs of safeguarding concern",
-    )
+  test_brief = VideoBrief(
+      sector=Sector.ADULT_CARE,
+      country="United Kingdom",
+      audience="Employees",
+      tone="Professional, Reassuring",
+      video_type="Training",
+      duration_seconds=60,
+      description=(
+          "Adult social care video for UK care workers explaining the five"
+          " signs of safeguarding concern"
+      ),
+  )
 
-    plan = generate_video_plan(test_brief)
-    print(f"Title: {plan.title}")
-    print("Structure:")
-    for item in plan.proposed_structure:
-        print(f"  - {item}")
-    print(f"Total duration: {plan.estimated_total_duration}s")
+  plan = generate_video_plan(test_brief)
+  print(f"Title: {plan.title}")
+  print("Structure:")
+  for item in plan.proposed_structure:
+    print(f"  - {item}")
+  print(f"Total duration: {plan.estimated_total_duration}s")
